@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import io
 
 st.title("🔍 Excel VLOOKUP App")
 
@@ -31,12 +32,16 @@ if file1 and file2:
         st.success("✅ VLOOKUP Completed!")
         st.dataframe(result_df)
 
-        # Download link
+        # Function to convert dataframe to binary Excel
         @st.cache_data
         def convert_df(df):
-            return df.to_excel(index=False, engine='openpyxl')
+            output = io.BytesIO()
+            with pd.ExcelWriter(output, engine='openpyxl') as writer:
+                df.to_excel(writer, index=False)
+            return output.getvalue()
 
         excel_data = convert_df(result_df)
+
         st.download_button(
             label="📥 Download Result Excel",
             data=excel_data,
