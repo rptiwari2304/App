@@ -32,15 +32,15 @@ if file1 and file2:
         st.success("✅ VLOOKUP Completed!")
         st.dataframe(result_df)
 
-        # Function to convert dataframe to binary Excel
-        @st.cache_data
-        def convert_df(df):
+        # Function to convert dataframe to Excel binary
+        def to_excel(df):
             output = io.BytesIO()
             with pd.ExcelWriter(output, engine='openpyxl') as writer:
                 df.to_excel(writer, index=False)
-            return output.getvalue()
+            processed_data = output.getvalue()
+            return processed_data
 
-        excel_data = convert_df(result_df)
+        excel_data = to_excel(result_df)
 
         st.download_button(
             label="📥 Download Result Excel",
