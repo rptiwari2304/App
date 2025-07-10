@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import io
 
-st.set_page_config(page_title="Excel VLOOKUP + Match Tool", layout="centered")
+st.set_page_config(page_title="AutoLookup Pro", layout="centered")
 
 st.markdown(
     """
@@ -26,7 +26,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.title("🔍 Excel VLOOKUP + Match Tool")
+st.title("🔍 AutoLookup Pro ")
 
 file1 = st.file_uploader("📄 Upload First Excel (Base file)", type=["xlsx"])
 file2 = st.file_uploader("📄 Upload Second Excel (Lookup file)", type=["xlsx"])
