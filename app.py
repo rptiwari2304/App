@@ -2,24 +2,18 @@ import streamlit as st
 import pandas as pd
 import io
 
-# 👆 Page config
 st.set_page_config(page_title="Excel VLOOKUP + Match Tool", layout="centered")
 
-# 👆 Custom CSS
 st.markdown(
     """
     <style>
     .main {background-color: #f8f9fa;}
     .stButton>button {background-color: #4CAF50; color:white;}
     .stDownloadButton>button {background-color: #007BFF; color:white;}
-    .footer {text-align: center; font-size: small; color: gray; margin-top: 2em;}
     </style>
     """,
     unsafe_allow_html=True,
 )
-
-# 👆 Logo
-st.image("logo.png", width=150)
 
 st.title("🔍 Excel VLOOKUP + Match Tool")
 
@@ -42,11 +36,13 @@ if file1 and file2:
         result_df = df1.copy()
 
         if fetch_col != "(None)":
+            # VLOOKUP mode
             lookup_dict = df2.set_index(col2)[fetch_col].to_dict()
             result_df["Result"] = result_df[col1].apply(
                 lambda x: lookup_dict.get(x, "Not Available")
             )
         else:
+            # Just match check → write value if found, else Not Available
             lookup_set = set(df2[col2])
             result_df["Result"] = result_df[col1].apply(
                 lambda x: x if x in lookup_set else "Not Available"
@@ -71,9 +67,3 @@ if file1 and file2:
 
 else:
     st.info("👆 Please upload both Excel files to begin.")
-
-# 👇 Footer
-st.markdown(
-    "<div class='footer'>Developed by <strong>ER Ruchi</strong></div>",
-    unsafe_allow_html=True,
-)
