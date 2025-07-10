@@ -10,6 +10,17 @@ st.markdown(
     .main {background-color: #f8f9fa;}
     .stButton>button {background-color: #4CAF50; color:white;}
     .stDownloadButton>button {background-color: #007BFF; color:white;}
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #f1f1f1;
+        text-align: center;
+        color: #333;
+        padding: 5px;
+        font-size: 14px;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -67,3 +78,14 @@ if file1 and file2:
 
 else:
     st.info("👆 Please upload both Excel files to begin.")
+
+
+# ✅ Footer with developer name
+st.markdown(
+    """
+    <div class='footer'>
+        Developed by <b>ER. Ruchi Tiwari</b>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
