@@ -80,11 +80,11 @@ else:
     st.info("👆 Please upload both Excel files to begin.")
 
 
-# ✅ Footer with developer name
+# ✅ Footer with developer name and laptop logo
 st.markdown(
     """
     <div class='footer'>
-        Developed by <b>ER. Ruchi Tiwari</b>
+        💻 Developed by <b>ER. Ruchi Tiwari</b>
     </div>
     """,
     unsafe_allow_html=True,
